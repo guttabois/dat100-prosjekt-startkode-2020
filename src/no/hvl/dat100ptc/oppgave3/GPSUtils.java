@@ -49,7 +49,7 @@ public class GPSUtils {
 
 		throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - SLUTT
+		// TODO - SLUTT test
 
 	}
 
