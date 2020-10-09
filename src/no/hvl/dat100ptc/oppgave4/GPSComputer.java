@@ -32,7 +32,7 @@ public class GPSComputer {
 		double distance = 0;
 
 		// TODO - START
-		for(int i = 0; i < gpspo)
+		for(int i = 0; i < gpspoints.length; i++)
 
 		throw new UnsupportedOperationException(TODO.method());
 
