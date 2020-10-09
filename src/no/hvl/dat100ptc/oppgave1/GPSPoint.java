@@ -4,84 +4,85 @@ import no.hvl.dat100ptc.TODO;
 
 public class GPSPoint {
 
-	// TODO - objektvariable
+    // TODO - objektvariable
+    
+    private int time;
+    private double latitude;
+    private double longitude;
+    private double elevation;
+        
+    public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
-	private int time;
-	private double latitude;
-	private double longitude;
-	private double elevation;
+        // TODO - konstruktur
 
-	public GPSPoint(int time, double latitude, double longitude, double elevation) {
+        this.time=time;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.elevation=elevation;
+        
 
-		// TODO - konstruktur
+    }
 
-		this.time = time;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.elevation = elevation;
+    // TODO - get/set metoder
+    public int getTime() {
+        
+        return time;
+        
+    }
 
-	}
+    public void setTime(int time) {
+                
+        this.time=time;
 
-	// TODO - get/set metoder
-	public int getTime() {
+    }
 
-		return time;
+    public double getLatitude() {
+        
+        return latitude;
+        
+    }
 
-	}
+    public void setLatitude(double latitude) {
+        
+        this.latitude=latitude;
+        
+    }
 
-	public void setTime(int time) {
+    public double getLongitude() {
+        
+        return longitude;
+        
+    }
 
-		this.time = time;
+    public void setLongitude(double longitude) {
+        
+        this.longitude=longitude;
+        
+    }
 
-	}
+    public double getElevation() {
+        
+        return elevation;
+        
+    }
 
-	public double getLatitude() {
+    public void setElevation(double elevation) {
+        
+        this.elevation=elevation;
+        
+    }
+    
+    public String toString() {
+        
+        String str;
+        
+        // TODO - start
 
-		return latitude;
+        str = getTime() + " (" + getLatitude() + "," + getLongitude() +") " + getElevation() +"\n";
+        
+        return str;
 
-	}
-
-	public void setLatitude(double latitude) {
-
-		this.latitude = latitude;
-
-	}
-
-	public double getLongitude() {
-
-		return longitude;
-
-	}
-
-	public void setLongitude(double longitude) {
-
-		this.longitude = longitude;
-
-	}
-
-	public double getElevation() {
-
-		return elevation;
-
-	}
-
-	public void setElevation(double elevation) {
-
-		this.elevation = elevation;
-
-	}
-
-	public String toString() {
-
-		String str;
-
-		// TODO - start
-
-		str = getTime() + " (" + getLatitude() + "," + getLongitude() + ") " + getElevation() + "\n";
-
-		return str;
-
-		// TODO - slutt
-
-	}
+        // TODO - slutt
+        
+    }
 }
