@@ -12,9 +12,9 @@ public class GPSData {
 
 		// TODO - START
 		
-		this.antall=0;
+		antall = 0;
 		
-		GPSPoint[] gpspoints = new GPSPoint[n];
+		gpspoints = new GPSPoint[n];
 
 		// TODO - SLUTT
 	}
@@ -28,19 +28,14 @@ public class GPSData {
 		boolean inserted = false;
 
 		// TODO - START
-		
 		if (antall < gpspoints.length) {
 			
-			gpspoints[this.antall] =gpspoint;
-			this.antall++;
+			gpspoints[antall] = gpspoint;
+			antall++;
 			
 			inserted = true;
-			return inserted;
-		} else { 
-			
-			return inserted;
-			
 		}
+		return inserted;
 
 		// TODO - SLUTT
 	}
@@ -65,10 +60,9 @@ public class GPSData {
 
 		// TODO - START
 
-		for (GPSPoint i : gpspoints) {
-			 
-			System.out.print(GPSPoint.toString());
-			}
+		for (GPSPoint gpspoint : gpspoints) {
+			System.out.print(gpspoint.toString());
+		}
 		// TODO - SLUTT
 		
 		System.out.println("====== Konvertert GPS Data - SLUTT ======");
