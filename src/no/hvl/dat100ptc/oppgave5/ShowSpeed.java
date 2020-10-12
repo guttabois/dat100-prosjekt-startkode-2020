@@ -50,7 +50,11 @@ public class ShowSpeed extends EasyGraphics {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (GPSPoint gpspoint : gpspoints) {
+			System.out.println("test");
+		}
+		
+		//throw new UnsupportedOperationException(TODO.method());
 	
 		// TODO - SLUTT
 	}
