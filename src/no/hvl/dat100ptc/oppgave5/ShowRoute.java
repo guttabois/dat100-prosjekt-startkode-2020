@@ -75,9 +75,12 @@ public class ShowRoute extends EasyGraphics {
 		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
 		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
 		
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
 		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+		
 		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
 
+		
 		int x = 0;
 		int y = 0;
 		
