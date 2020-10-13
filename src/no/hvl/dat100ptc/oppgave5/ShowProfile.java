@@ -53,7 +53,7 @@ public class ShowProfile extends EasyGraphics {
 		for (GPSPoint gpspoint : gpspoints) {
 			int tempYbase = ybase - (int)gpspoint.getElevation() > 0 ? ybase - (int)gpspoint.getElevation() : 0;
 			drawLine(x, ybase, x, tempYbase);
-			x += 3;
+			x += 2;
 		}
 		//throw new UnsupportedOperationException(TODO.method());
 	
