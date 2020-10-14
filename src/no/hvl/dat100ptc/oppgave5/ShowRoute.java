@@ -81,11 +81,22 @@ public class ShowRoute extends EasyGraphics {
 		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
 
 		
+
+		int x1 = 0;
+		int y1 = 0;
+		
+		int x2 = 0;
+		int y2 = 2;
+		
+//		double tempX = 0;
+//		double tempY = 0;
+    
 		int x = 0;
 		int y = 0;
 		
 		double tempX = 0;
 		double tempY = 0;
+
 		
 		System.out.println(ybase);
 		System.out.println("maxlat" + maxlat);
@@ -96,16 +107,26 @@ public class ShowRoute extends EasyGraphics {
 			// her kan vi trolig droppe tempY og tempX, 
 			// og heller caste direkte til int
 			
-			tempY = ybase - (latitudes[i] - minlat) * ystep();
-			tempX = MARGIN + (longitudes[i] - minlon) * xstep();
+
+			//tempY = ybase - (latitudes[i] - minlat) * ystep();
+			//tempX = MARGIN + (longitudes[i] - minlon) * xstep();
 			
-			y = (int)tempY;
-			x = (int)tempX;
+			//y = (int)tempY;
+			//x = (int)tempX;
+			
+			x1 = (int)(MARGIN + (longitudes[i] - minlon) * xstep());
+			y1 = (int)(ybase - (latitudes[i] - minlat) * ystep());
 			
 			setColor(40,255,40);
 			
-			fillCircle(x, y, 5);
-			//x++;
+			fillCircle(x1, y1, 5);
+			
+			if(i < latitudes.length -1) {
+			x2 = (int)(MARGIN + (longitudes[i+1] - minlon) * xstep());
+			y2 = (int)(ybase - (latitudes[i+1] - minlat) * ystep());
+			
+			drawLine(x1, y1, x2, y2);
+			}
 		}
 		
 		//throw new UnsupportedOperationException(TODO.method());
