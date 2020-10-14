@@ -57,17 +57,70 @@ public class ShowRoute extends EasyGraphics {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
 
+		ystep = MAPYSIZE / (Math.abs(maxlat - minlat)); 
+
+		return ystep;
 		// TODO - SLUTT
 		
 	}
 
 	public void showRouteMap(int ybase) {
 
-		// TODO - START
+		// ybase- (int) (latitude for punktet, - minstelatituden) * ystep
 		
-		throw new UnsupportedOperationException(TODO.method());
+		// TODO - START
+		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
+		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
+		
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+		
+		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
+
+		
+		int x1 = 0;
+		int y1 = 0;
+		
+		int x2 = 0;
+		int y2 = 2;
+		
+//		double tempX = 0;
+//		double tempY = 0;
+		
+		System.out.println(ybase);
+		System.out.println("maxlat" + maxlat);
+		System.out.println("ystep" + ystep());
+		
+		for (int i = 0; i < latitudes.length; i++) {
+			
+			// her kan vi trolig droppe tempY og tempX, 
+			// og heller caste direkte til int
+			
+			//tempY = ybase - (latitudes[i] - minlat) * ystep();
+			//tempX = MARGIN + (longitudes[i] - minlon) * xstep();
+			
+			//y = (int)tempY;
+			//x = (int)tempX;
+			
+			x1 = (int)(MARGIN + (longitudes[i] - minlon) * xstep());
+			y1 = (int)(ybase - (latitudes[i] - minlat) * ystep());
+			
+			setColor(40,255,40);
+			
+			fillCircle(x1, y1, 5);
+			
+			if(i < latitudes.length -1) {
+			x2 = (int)(MARGIN + (longitudes[i+1] - minlon) * xstep());
+			y2 = (int)(ybase - (latitudes[i+1] - minlat) * ystep());
+			
+			drawLine(x1, y1, x2, y2);
+			}
+		}
+		
+		//throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - SLUTT
 	}
@@ -80,8 +133,21 @@ public class ShowRoute extends EasyGraphics {
 		setFont("Courier",12);
 		
 		// TODO - START
+		// kan be om input, kcal && totalKcal krever weight som formell parameter
+		double weight = 80.0; 
 		
-		throw new UnsupportedOperationException(TODO.method());
+		String[] statisticsArray =  {
+				"Total time     : " + GPSUtils.formatTime(gpscomputer.totalTime()),
+				"Total distance : " + GPSUtils.formatDouble(gpscomputer.totalDistance()/1000) + " km",
+				"Total elevation: " + GPSUtils.formatDouble(gpscomputer.totalElevation()) + " m",
+				"Max speed      : " + GPSUtils.formatDouble(gpscomputer.maxSpeed()) + " km/t",
+				"Average speed  : " + GPSUtils.formatDouble(gpscomputer.averageSpeed()) + " km/t",
+				"Enregy         : " + GPSUtils.formatDouble(gpscomputer.totalKcal(weight)) + " kcal"
+		};
+		
+		for (int i = 0; i < statisticsArray.length; i++) {
+			drawString(statisticsArray[i], MARGIN, (i + 1) * TEXTDISTANCE);
+		}
 		
 		// TODO - SLUTT;
 	}
