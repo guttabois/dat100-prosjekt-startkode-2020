@@ -121,8 +121,21 @@ public class ShowRoute extends EasyGraphics {
 		setFont("Courier",12);
 		
 		// TODO - START
+		// kan be om input, kcal && totalKcal krever weight som formell parameter
+		double weight = 80.0; 
 		
-		//throw new UnsupportedOperationException(TODO.method());
+		String[] statisticsArray =  {
+				"Total time     : " + GPSUtils.formatTime(gpscomputer.totalTime()),
+				"Total distance : " + GPSUtils.formatDouble(gpscomputer.totalDistance()/1000) + " km",
+				"Total elevation: " + GPSUtils.formatDouble(gpscomputer.totalElevation()) + " m",
+				"Max speed      : " + GPSUtils.formatDouble(gpscomputer.maxSpeed()) + " km/t",
+				"Average speed  : " + GPSUtils.formatDouble(gpscomputer.averageSpeed()) + " km/t",
+				"Enregy         : " + GPSUtils.formatDouble(gpscomputer.totalKcal(weight)) + " kcal"
+		};
+		
+		for (int i = 0; i < statisticsArray.length; i++) {
+			drawString(statisticsArray[i], MARGIN, (i + 1) * TEXTDISTANCE);
+		}
 		
 		// TODO - SLUTT;
 	}
