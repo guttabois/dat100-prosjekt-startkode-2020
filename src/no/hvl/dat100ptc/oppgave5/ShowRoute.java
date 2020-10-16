@@ -66,9 +66,43 @@ public class ShowRoute extends EasyGraphics {
 	public void showRouteMap(int ybase) {
 
 		// TODO - START
+<<<<<<< Updated upstream
 		
 		throw new UnsupportedOperationException(TODO.method());
 		
+=======
+		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
+		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
+
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+
+		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
+
+		int x1 = 0;
+		int y1 = 0;
+
+		int x2 = 0;
+		int y2 = 0;
+
+		for (int i = 0; i < latitudes.length; i++) {
+
+			x1 = (int) (MARGIN + (longitudes[i] - minlon) * xstep());
+			y1 = (int) (ybase - (latitudes[i] - minlat) * ystep());
+
+			setColor(40, 255, 40);
+
+			fillCircle(x1, y1, 5);
+
+			if (i != 0) {
+				drawLine(x1, y1, x2, y2);
+			}
+
+			x2 = x1;
+			y2 = y1;
+		}
+
+>>>>>>> Stashed changes
 		// TODO - SLUTT
 	}
 
