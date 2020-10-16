@@ -6,6 +6,7 @@ import no.hvl.dat100ptc.oppgave2.GPSData;
 import no.hvl.dat100ptc.oppgave2.GPSDataConverter;
 import no.hvl.dat100ptc.oppgave2.GPSDataFileReader;
 import no.hvl.dat100ptc.oppgave3.GPSUtils;
+import no.hvl.dat100ptc.oppgave3.*;
 
 public class GPSComputer {
 
@@ -195,5 +196,32 @@ public class GPSComputer {
 		// TODO - SLUTT
 
 	}
+	
+	public double[] climbs() {
+		double[] climbArray = new double[gpspoints.length-1];
+		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
+
+		//økning i % = (slutt - start) * 100 / start
+		
+		for(int i = 0; i < latitudes.length-1; i++) {
+			climbArray[i] = (latitudes[i+1] - latitudes[i])*100/latitudes[i];
+		}
+		return climbArray;
+	}
+	
+	public double maxClimb() {
+		return GPSUtils.findMax(climbs());
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 
 }

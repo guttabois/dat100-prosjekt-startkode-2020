@@ -86,10 +86,6 @@ public class ShowRoute extends EasyGraphics {
 		int x2 = 0;
 		int y2 = 0;
 
-		System.out.println(ybase);
-		System.out.println("maxlat" + maxlat);
-		System.out.println("ystep" + ystep());
-
 		for (int i = 0; i < latitudes.length; i++) {
 
 			x1 = (int) (MARGIN + (longitudes[i] - minlon) * xstep());
