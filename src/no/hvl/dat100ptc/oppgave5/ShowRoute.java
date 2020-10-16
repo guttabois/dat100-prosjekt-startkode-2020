@@ -16,7 +16,7 @@ public class ShowRoute extends EasyGraphics {
 
 	private GPSPoint[] gpspoints;
 	private GPSComputer gpscomputer;
-	
+
 	public ShowRoute() {
 
 		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
@@ -35,7 +35,7 @@ public class ShowRoute extends EasyGraphics {
 		makeWindow("Route", MAPXSIZE + 2 * MARGIN, MAPYSIZE + 2 * MARGIN);
 
 		showRouteMap(MARGIN + MAPYSIZE);
-		
+
 		showStatistics();
 	}
 
@@ -45,32 +45,34 @@ public class ShowRoute extends EasyGraphics {
 		double maxlon = GPSUtils.findMax(GPSUtils.getLongitudes(gpspoints));
 		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
 
-		double xstep = MAPXSIZE / (Math.abs(maxlon - minlon)); 
+		double xstep = MAPXSIZE / (Math.abs(maxlon - minlon));
 
 		return xstep;
 	}
 
 	// antall y-pixels per breddegrad
 	public double ystep() {
-	
-		double ystep;
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
 
+		double ystep;
+
+		// TODO - START
+
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+
+		ystep = MAPYSIZE / (Math.abs(maxlat - minlat));
+
+		return ystep;
 		// TODO - SLUTT
-		
+
 	}
 
 	public void showRouteMap(int ybase) {
 
+		// ybase- (int) (latitude for punktet, - minstelatituden) * ystep
+
 		// TODO - START
-<<<<<<< Updated upstream
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-=======
+
 		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
 		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
 
@@ -102,7 +104,6 @@ public class ShowRoute extends EasyGraphics {
 			y2 = y1;
 		}
 
->>>>>>> Stashed changes
 		// TODO - SLUTT
 	}
 
@@ -110,13 +111,24 @@ public class ShowRoute extends EasyGraphics {
 
 		int TEXTDISTANCE = 20;
 
-		setColor(0,0,0);
-		setFont("Courier",12);
-		
+		setColor(0, 0, 0);
+		setFont("Courier", 12);
+
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		// kan be om input, kcal && totalKcal krever weight som formell parameter
+		double weight = 80.0;
+
+		String[] statisticsArray = { "Total time     : " + GPSUtils.formatTime(gpscomputer.totalTime()),
+				"Total distance : " + GPSUtils.formatDouble(gpscomputer.totalDistance() / 1000) + " km",
+				"Total elevation: " + GPSUtils.formatDouble(gpscomputer.totalElevation()) + " m",
+				"Max speed      : " + GPSUtils.formatDouble(gpscomputer.maxSpeed()) + " km/t",
+				"Average speed  : " + GPSUtils.formatDouble(gpscomputer.averageSpeed()) + " km/t",
+				"Enregy         : " + GPSUtils.formatDouble(gpscomputer.totalKcal(weight)) + " kcal" };
+
+		for (int i = 0; i < statisticsArray.length; i++) {
+			drawString(statisticsArray[i], MARGIN, (i + 1) * TEXTDISTANCE);
+		}
+
 		// TODO - SLUTT;
 	}
 
